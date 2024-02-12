@@ -14976,7 +14976,8 @@ textarea.form-control {
   width: 200px !important;
 }
 
-.filter-overlapblackbg {
+.filter-overlapblackbg,
+.off-canvas-overlayblackbg {
   right: 0;
   width: 100%;
   height: 100vh;
@@ -14989,6 +14990,92 @@ textarea.form-control {
   cursor: pointer;
 }
 
+.card .mapmarker {
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  text-align: center;
+  line-height: 2px;
+  width: auto !important;
+}
+.card .mapmarker span:first-child {
+  display: block;
+  border: solid 2px var(--secondary-color);
+  width: 30px !important;
+  line-height: 25px;
+  margin: 0 auto 5px;
+  border-radius: 50%;
+}
+
+.gmap_marker {
+  position: absolute;
+  cursor: pointer;
+  background: var(--secondary-color);
+  z-index: 99999;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  text-align: center;
+  -webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+}
+
+.gmap_marker:after {
+  top: 32px;
+  left: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-top-color: var(--secondary-color);
+  border-width: 8px;
+  margin-left: -8px;
+}
+
+.gmap_marker u {
+  display: block;
+  line-height: 28px;
+  width: 28px;
+  border-radius: 50%;
+  margin: 3px auto 0;
+  font-size: 12px;
+  background: #fff;
+  text-decoration: none;
+}
+
+.off-canvas {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  width: 400px;
+  transform: translateX(400px);
+  transition: transform 0.3s ease-in-out;
+  height: 100vh;
+  z-index: 9999;
+}
+
+.horizontalMenucontainer.off-canvas-active .off-canvas {
+  transform: translateX(0px);
+}
+.horizontalMenucontainer.off-canvas-active .off-canvas-overlayblackbg {
+  opacity: 1;
+  z-index: 999;
+  visibility: visible;
+  transition: opacity 1.5s ease-in-out;
+  -webkit-transition: opacity 1.5s ease-in-out;
+  -moz-transition: opacity 1.5s ease-in-out;
+  -ms-transition: opacity 1.5s ease-in-out;
+  -o-transition: opacity 1.5s ease-in-out;
+}
+
+@media screen and (max-width: 600px) {
+  .off-canvas {
+    width: 250px;
+  }
+}
 @media screen and (max-width: 991px) {
   .horizontalMenucontainer .ad-filter-group {
     display: none;
@@ -15016,6 +15103,33 @@ textarea.form-control {
     -o-transition: opacity 1.5s ease-in-out;
   }
 }
+.advert__mobile-leaderboard {
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+  max-width: 100%;
+  padding: 16px 0;
+}
+.advert__title {
+  background-color: transparent;
+  color: #adb5bd;
+  font: 700 10px helvetica, arial, sans-serif !important;
+  margin-bottom: 5px !important;
+  margin-top: 8px !important;
+  padding-top: 0;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.advert__placeholder {
+  background-color: #f6f6f6;
+  width: 100%;
+  max-width: 100%;
+  min-height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /*----Highlight Styles----*/
 .example + .highlight {
   border-top: none;
@@ -23197,6 +23311,10 @@ a.icon:hover {
   margin: 0 auto;
   text-align: center;
   font-size: 12px;
+}
+
+.item-card2-desc a {
+  font-size: 14px;
 }
 
 /*--item-card7--*/
@@ -31853,6 +31971,7 @@ body.dark-theme {
 .custom-control {
   position: relative;
   display: block;
+  font-size: 14px;
   min-height: 1.5rem;
   padding-left: 1.5rem;
 }
@@ -33806,7 +33925,7 @@ svg {
 .axgmap {
   position: relative;
   width: 100%;
-  height: 500px;
+  height: 100vh;
 }
 
 .axgmap-img {

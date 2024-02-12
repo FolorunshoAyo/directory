@@ -163,3 +163,158 @@ if (navigator.userAgent.match(/like Mac OS X/i)) {
     })
 
 }
+
+// Map functionality
+function loadGMap(e, t) {
+    var a = document.getElementsByTagName("script");
+    for (i = 0; i < a.length; i++)
+        if (a[i].src.match(/maps.googleapis.com/))
+            return void window[e]();
+    var o = document.createElement("script");
+    o.type = "text/javascript",
+    o.async = !0,
+    o.defer = !0,
+    o.src = "https://maps.googleapis.com/maps/api/js?key=" + t + "&callback=" + e;
+    t = document.getElementsByTagName("script")[0];
+    t.parentNode.insertBefore(o, t)
+}
+var total_nav_width, marker, myLatlng, initMap, mapslidertop, map, initMapList, composeHtml, initMapListMobile, addthis_config, count, map_styles = [{
+    featureType: "landscape",
+    elementType: "geometry",
+    stylers: [{
+        hue: "#a1ced1"
+    }]
+}, {
+    featureType: "road.highway",
+    elementType: "geometry",
+    stylers: [{
+        color: "#f77776"
+    }, {
+        lightness: 0
+    }]
+}, {
+    featureType: "road.arterial",
+    elementType: "geometry",
+    stylers: [{
+        color: "#f8aead"
+    }, {
+        lightness: 0
+    }]
+}, {
+    featureType: "water",
+    stylers: [{
+        color: "#a7e2ef"
+    }]
+}, {
+    featureType: "poi",
+    stylers: [{
+        visibility: "off"
+    }]
+}];
+
+function COverlay(e, t, a) {
+    this.no_ = t,
+    this.latlng_ = e,
+    this.map_ = a,
+    this.div_ = null,
+    this.setMap(a)
+}
+
+map = null,
+initMapList = function(e) {
+    var a = new google.maps.InfoWindow({
+        pixelOffset: new google.maps.Size(0,-45)
+    });
+    google.maps.event.addListener(a, "closeclick", function() {
+        a.close()
+    }),
+    void 0 === e && (e = "companiesmap");
+    var t = {
+        zoom: $("#companiesmap").data("map-zoom"),
+        center: new google.maps.LatLng($("#companiesmap").data("map-ltd"),$("#companiesmap").data("map-lng")),
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        scrollwheel: !1,
+        fullscreenControl: !1,
+        streetViewControl: !1,
+        backgroundColor: "#F2F2F2",
+        zoomControlOptions: {
+            style: google.maps.ZoomControlStyle.LARGE,
+            position: google.maps.ControlPosition.TOP_LEFT
+        },
+        styles: map_styles
+    };
+    (map = new google.maps.Map(document.getElementById(e),t)).markers = new Array,
+    COverlay.prototype = new google.maps.OverlayView,
+    COverlay.prototype.onAdd = function() {	
+        var e = this
+          , t = document.createElement("div");
+        t.className = "gmap_marker",
+        t.innerHTML = "<u>" + (this.no_ + 1) + "</u>",
+        this.div_ = t,
+        google.maps.event.addDomListener(t, "click", function() {
+            map.setCenter(e.latlng_),
+            a.setContent(composeHtml(e.no_)),
+            a.setPosition(e.latlng_),
+            a.open(map)
+        }),
+        this.getPanes().overlayMouseTarget.appendChild(t)
+    }
+    ,
+    COverlay.prototype.draw = function() {
+        var e = this.getProjection().fromLatLngToDivPixel(this.latlng_)
+          , t = this.div_;
+        e && (t.style.left = e.x - 18 + "px",
+        t.style.top = e.y - 44 + "px")
+    }
+    ,
+    COverlay.prototype.onRemove = function() {
+        this.setMap(null),
+        this.div_.parentNode.removeChild(this.div_),
+        this.div_ = null
+    }
+    ,
+	count = 1;
+    $(".mapmarker").each(function(e, t) {
+        0 == e && (map.setCenter(new google.maps.LatLng($(this).data("ltd"),$(this).data("lng"))),
+        map.setZoom($("#companiesmap").data("map-zoom")));
+		if(count <= Number($("#companiesmap").data("map-companies-count-per-page"))){
+			e = new COverlay(new google.maps.LatLng($(this).data("ltd"),$(this).data("lng")),e,map);
+			map.markers.push(e)
+			count++;
+		}
+        $(this).click(function() {
+            map.markers[Number($(this).data("key"))].div_.click()
+			$(".horizontalMenucontainer").addClass("off-canvas-active");
+        })
+    })
+
+	console.log(map.markers);
+}
+,
+composeHtml = function(e) {
+    return `
+	<div class="axg-img">
+		<h4>${$("#company-" + e + " .business-title").html()}</h4>
+		<img
+			src="${$("#company-" + e + " .business-image").attr("src")}"
+			alt="img"
+			class="w-150 h100 mb-3 mt-2"
+		/>
+		<div>${$("#company-" + e + " .business-timings").html()}</div>
+		<h6 class="text-dark font-weight-normal mb-3 item-card2-desc">
+			${$("#company-" + e + " .business-contact").html()}
+		</h6>
+		<a href="${$("#company-" + e + " .business-direction").attr("href")}" class="btn btn-sm btn-secondary btn-pill">
+			Get Directions
+		</a>
+	</div>`
+}
+
+//___________Companies map activate
+$("#companiesmap").removeClass("gm_slider"),
+loadGMap("initMapList", $("#companiesmap").data("map-key"))
+
+//_____________Filter Options Activate
+$('.off-canvas-overlayblackbg').on("click", function(e) {
+	$(".horizontalMenucontainer").removeClass('off-canvas-active');
+});
