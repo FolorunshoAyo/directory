@@ -280,6 +280,30 @@
 			}
 		}
 	})
+
+	// ______________Owl-carousel-job-vacancies
+	var owl = $('.owl-carousel-ads-slider');
+	owl.owlCarousel({
+		margin: 25,
+		loop: true,	
+		nav: false,
+		dots: false,
+		autoplay: true,
+		responsive: {
+			0: {
+				items: 1
+			},
+			600: {
+				items: 2
+			},
+			1000: {
+				items: 3
+			},
+			1200: {
+				items: 4
+			}
+		}
+	})
 	
 })(jQuery);
 

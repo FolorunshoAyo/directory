@@ -15051,7 +15051,7 @@ textarea.form-control {
   top: 0px;
   right: 0px;
   width: 400px;
-  transform: translateX(400px);
+  transform: translateX(800px);
   transition: transform 0.3s ease-in-out;
   height: 100vh;
   z-index: 9999;
@@ -15128,6 +15128,58 @@ textarea.form-control {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.advert-slider-container {
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  height: 100px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.advert-slider-container a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  text-decoration: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.advert-slider-container img {
+  max-width: 100%;
+  display: block;
+  transition: transform 0.3s ease;
+}
+.advert-slider-container:hover a {
+  opacity: 1;
+}
+.advert-slider-container:hover img {
+  transform: scale(1.1);
+}
+
+.filter-container {
+  height: 150px;
+  padding-right: 5px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f0f0f0;
+}
+.filter-container::-webkit-scrollbar {
+  width: 10px;
+}
+.filter-container .scroll-container::-webkit-scrollbar-track {
+  background-color: #f0f0f0;
+}
+.filter-container::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+}
+.filter-container::-webkit-scrollbar-thumb:hover {
+  background-color: #6f6f6f;
 }
 
 /*----Highlight Styles----*/
@@ -15676,7 +15728,7 @@ textarea.form-control {
 
 .label {
   display: inline-block;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.2rem;
   display: inline;
   padding: 0.2em 0.6em 0.3em;
   font-size: 75%;
@@ -31971,7 +32023,7 @@ body.dark-theme {
 .custom-control {
   position: relative;
   display: block;
-  font-size: 14px;
+  font-size: 12px;
   min-height: 1.5rem;
   padding-left: 1.5rem;
 }
@@ -32010,8 +32062,8 @@ body.dark-theme {
   top: 0.25rem;
   left: 0;
   display: block;
-  width: 1rem;
-  height: 1rem;
+  width: 0.8rem;
+  height: 0.8rem;
   pointer-events: none;
   content: "";
   -webkit-user-select: none;
@@ -32025,8 +32077,8 @@ body.dark-theme {
   top: 0.25rem;
   left: 0;
   display: block;
-  width: 1rem;
-  height: 1rem;
+  width: 0.8rem;
+  height: 0.8rem;
   content: "";
   background-repeat: no-repeat;
   background-position: center center;
