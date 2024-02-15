@@ -698,7 +698,7 @@
                 <h3 class="card-title">City</h3>
               </div>
               <div class="form-group border-bottom p-2 mb-0"> 
-                <input type="search" class="fs-12 form-control" data-filter="search" data-filter-list="filter-city-checkboxs" placeholder="Filter Cities"> 
+                <input type="search" class="fs-12 form-control" data-filter="search" data-grouped="0" data-filter-list="filter-city-checkboxs" placeholder="Filter Cities"> 
               </div>
               <div class="card-body">
                 <div class="filter-container">
@@ -785,7 +785,7 @@
                 <h3 class="card-title">Categories</h3>
               </div>
               <div class="form-group border-bottom p-2 mb-0"> 
-                <input type="search" class="fs-12 form-control" data-filter="search" data-filter-list="filter-category-checkboxs" placeholder="Filter Categories"> 
+                <input type="search" class="fs-12 form-control" data-filter="search" data-grouped="1" data-filter-list="filter-category-checkboxs" placeholder="Filter Categories"> 
               </div>
               <div class="card-body">
                 <div class="filter-container">
@@ -1047,38 +1047,140 @@
                   </div>
                 </div>
               </div>
-              <div class="card-header border-top">
-                <h3 class="card-title">Posted By</h3>
+              <div class="card-header">
+                <h3 class="card-title">Related Categories</h3>
+              </div>
+              <div class="form-group border-bottom p-2 mb-0"> 
+                <input type="search" class="fs-12 form-control" data-filter="search" data-grouped="0" data-filter-list="filter-related-category-checkboxs" placeholder="Filter Related Categories"> 
               </div>
               <div class="card-body">
-                <div class="filter-product-checkboxs">
-                  <label class="custom-control form-checkbox mb-2">
-                    <input
-                      type="checkbox"
-                      class="custom-control-input"
-                      name="checkbox1"
-                      value="option1"
-                    />
-                    <span class="custom-control-label"> Dealer </span>
-                  </label>
-                  <label class="custom-control form-checkbox mb-2">
-                    <input
-                      type="checkbox"
-                      class="custom-control-input"
-                      name="checkbox2"
-                      value="option2"
-                    />
-                    <span class="custom-control-label"> Individual </span>
-                  </label>
-                  <label class="custom-control form-checkbox mb-0">
-                    <input
-                      type="checkbox"
-                      class="custom-control-input"
-                      name="checkbox2"
-                      value="option2"
-                    />
-                    <span class="custom-control-label"> Reseller </span>
-                  </label>
+                <div class="filter-container">
+                  <div id="filter-related-category-checkboxs">
+                    <label class="custom-control form-checkbox mb-3">
+                      <input
+                        type="checkbox"
+                        class="custom-control-input"
+                        name="checkbox1"
+                        value="option1"
+                      />
+                      <span class="custom-control-label">
+                        <a href="#" class="text-dark"
+                          >Hotels<span class="label label-secondary float-end"
+                            >14</span
+                          ></a
+                        >
+                      </span>
+                    </label>
+                    <label class="custom-control form-checkbox mb-3">
+                      <input
+                        type="checkbox"
+                        class="custom-control-input"
+                        name="checkbox2"
+                        value="option2"
+                      />
+                      <span class="custom-control-label">
+                        <a href="#" class="text-dark"
+                          >Restaurant<span
+                            class="label label-secondary float-end"
+                            >22</span
+                          ></a
+                        >
+                      </span>
+                    </label>
+                    <label class="custom-control form-checkbox mb-3">
+                      <input
+                        type="checkbox"
+                        class="custom-control-input"
+                        name="checkbox3"
+                        value="option3"
+                      />
+                      <span class="custom-control-label">
+                        <a href="#" class="text-dark"
+                          >Events<span class="label label-secondary float-end"
+                            >78</span
+                          ></a
+                        >
+                      </span>
+                    </label>
+                    <label class="custom-control form-checkbox mb-3">
+                      <input
+                        type="checkbox"
+                        class="custom-control-input"
+                        name="checkbox4"
+                        value="option3"
+                      />
+                      <span class="custom-control-label">
+                        <a href="#" class="text-dark"
+                          >Cinema Halls<span
+                            class="label label-secondary float-end"
+                            >35</span
+                          ></a
+                        >
+                      </span>
+                    </label>
+                    <label class="custom-control form-checkbox mb-3">
+                      <input
+                        type="checkbox"
+                        class="custom-control-input"
+                        name="checkbox5"
+                        value="option3"
+                      />
+                      <span class="custom-control-label">
+                        <a href="#" class="text-dark"
+                          >Gym<span class="label label-secondary float-end"
+                            >23</span
+                          ></a
+                        >
+                      </span>
+                    </label>
+                    <label class="custom-control form-checkbox mb-3">
+                      <input
+                        type="checkbox"
+                        class="custom-control-input"
+                        name="checkbox6"
+                        value="option3"
+                      />
+                      <span class="custom-control-label">
+                        <a href="#" class="text-dark"
+                          >Shop &amp; Store<span
+                            class="label label-secondary float-end"
+                            >14</span
+                          ></a
+                        >
+                      </span>
+                    </label>
+                    <label class="custom-control form-checkbox mb-3">
+                      <input
+                        type="checkbox"
+                        class="custom-control-input"
+                        name="checkbox7"
+                        value="option3"
+                      />
+                      <span class="custom-control-label">
+                        <a href="#" class="text-dark"
+                          >Tours &amp; Travels<span
+                            class="label label-secondary float-end"
+                            >45</span
+                          ></a
+                        >
+                      </span>
+                    </label>
+                    <label class="custom-control form-checkbox mb-3">
+                      <input
+                        type="checkbox"
+                        class="custom-control-input"
+                        name="checkbox7"
+                        value="option3"
+                      />
+                      <span class="custom-control-label">
+                        <a href="#" class="text-dark"
+                          >Cafe<span class="label label-secondary float-end"
+                            >34</span
+                          ></a
+                        >
+                      </span>
+                    </label>
+                  </div>
                 </div>
               </div>
               <div class="card-footer">

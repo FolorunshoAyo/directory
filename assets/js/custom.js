@@ -368,35 +368,53 @@ $(".off-canvas-overlayblackbg").on("click", function (e) {
 $(document).ready(function () {
   $("[data-filter]").each(function () {
     var el = $(this);
-    var targetCategoryGroups = $(`#${$(this).data("filter-list")} .category-group-container`);
 
-    el.on("keyup", function () {
-      var searchText = el.val().toLowerCase();
+    if(el.data("grouped") === 1){
+      var targetCategoryGroups = $(`#${$(this).data("filter-list")} .category-group-container`);
 
-      targetCategoryGroups.each(function (index) {
-        const searchTitle = $(this).find("h6");
-        const searchLabels = $(this).find("label");
+      el.on("keyup", function () {
+        var searchText = el.val().toLowerCase();
 
-        searchLabels.each(function () {
+        targetCategoryGroups.each(function (index) {
+          const searchTitle = $(this).find("h6");
+          const searchLabels = $(this).find("label");
+
+          searchLabels.each(function () {
+            const labelText = $(this).text().toLowerCase();
+            if (labelText.includes(searchText)) {
+              $(this).show();
+            } else {
+              $(this).hide();
+            }
+          });
+
+          const invisibleLabelsCount = searchLabels.filter(function() {
+            return $(this).css('display') === 'none';
+          });
+
+          // Hide titles if no labels under the category are visible
+          if(invisibleLabelsCount.length === Number($(this).data("category-count"))){
+            searchTitle.css({ display: 'none'});
+          }else{
+            searchTitle.css({ display: 'block'});
+          }
+        });
+      }); 
+    }else{
+      el.on("keyup", function () {
+        var searchText = el.val().toLowerCase();
+        const labels = $(`#${el.data("filter-list")} label`);
+
+        labels.each(function(){
           const labelText = $(this).text().toLowerCase();
+
           if (labelText.includes(searchText)) {
             $(this).show();
           } else {
             $(this).hide();
           }
         });
-
-        const invisibleLabelsCount = searchLabels.filter(function() {
-          return $(this).css('display') === 'none';
-        });
-
-        // Hide titles if no labels under the category are visible
-        if(invisibleLabelsCount.length === Number($(this).data("category-count"))){
-          searchTitle.css({ display: 'none'});
-        }else{
-          searchTitle.css({ display: 'block'});
-        }
       });
-    });
+    }
   });
 });
