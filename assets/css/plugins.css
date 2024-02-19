@@ -3835,8 +3835,8 @@ button.ui-button::-moz-focus-inner {
 .ui-slider .ui-slider-handle {
   position: absolute;
   z-index: 2;
-  width: 1.2em;
-  height: 1.2em;
+  width: 0.8em;
+  height: 0.8em;
   cursor: default;
   -ms-touch-action: none;
   touch-action: none;
@@ -3856,7 +3856,7 @@ button.ui-button::-moz-focus-inner {
 
 /* support: IE8 - See #6727 */
 .ui-slider-horizontal {
-  height: 0.8em;
+  height: 0.3em;
 }
 .ui-slider-horizontal .ui-slider-handle {
   top: -0.3em;
@@ -4866,28 +4866,28 @@ body .ui-tooltip {
 /* Misc visuals
   ----------------------------------*/
 /* Corner radius */
-.ui-corner-all,
+.ui-corner-all {
+  border-radius: 50%;
+}
+
 .ui-corner-top,
 .ui-corner-left,
 .ui-corner-tl {
   border-top-left-radius: 4px;
 }
 
-.ui-corner-all,
 .ui-corner-top,
 .ui-corner-right,
 .ui-corner-tr {
   border-top-right-radius: 4px;
 }
 
-.ui-corner-all,
 .ui-corner-bottom,
 .ui-corner-left,
 .ui-corner-bl {
   border-bottom-left-radius: 4px;
 }
 
-.ui-corner-all,
 .ui-corner-bottom,
 .ui-corner-right,
 .ui-corner-br {

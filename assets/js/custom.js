@@ -355,9 +355,11 @@ function COverlay(e, t, a) {
 	</div>`;
   });
 
-//___________Companies map activate
-$("#companiesmap").removeClass("gm_slider"),
+if($("#companiesmap").length){
+  //___________Companies map activate
+  $("#companiesmap").removeClass("gm_slider")
   loadGMap("initMapList", $("#companiesmap").data("map-key"));
+}
 
 //_____________Filter Options Activate
 $(".off-canvas-overlayblackbg").on("click", function (e) {
@@ -417,4 +419,21 @@ $(document).ready(function () {
       });
     }
   });
+
+  // Boostrap reading of invoked modals for youtube videos
+  const $homeVideo = $('#homeVideo');
+
+  if($homeVideo){
+    $homeVideo.on('shown.bs.modal', function (e) {
+      
+      
+    });
+
+    $(document).on('click', '[data-bs-target="#homeVideo"]', function (e) {
+      // Check if the clicked element has data-bs-toggle attribute
+      const togglerElement = e.currentTarget;
+      const iframe = document.querySelector("#homeVideo iframe");
+      iframe.src = togglerElement.dataset.youtubeEmbedUrl;
+    });
+  }
 });

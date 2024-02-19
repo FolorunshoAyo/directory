@@ -25,6 +25,18 @@
 	}
 }
 
+.item-tags {
+	position: absolute;
+	bottom: 12px;
+	left: 10px;
+	z-index: 9;
+	font-size: 12px;
+
+	.badge{
+		padding: 5px 10px;
+	}
+}
+
 @media (max-width: 400px) {
 	.item-search-menu ul li a {
 		width: 100%;

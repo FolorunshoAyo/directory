@@ -37,16 +37,38 @@
 			animationSpeed: 0.5
 		});
 	}
+
+	var priceEl = $("#price");
+	var activeCurrency = priceEl.data("active-currency");
+	var startValue = priceEl.data("start-value");
+	var endValue = priceEl.data("end-value");
+	var selectedRange = priceEl.data("current-range").split("-");
+	
+	function convertToHumanReadable(input) {
+		// Convert the input to a numerical value
+		var number = parseFloat(input);
+	
+		// Check if the conversion was successful
+		if (!isNaN(number)) {
+			// Apply formatting to the numerical value using toLocaleString()
+			return number.toLocaleString();
+		} else {
+			// If the input couldn't be converted to a number, return an error message
+			return "Invalid input";
+		}
+	}
+	
 	$("#mySlider").slider({
 		range: true,
-		min: 10,
-		max: 999,
-		values: [ 200, 500 ],
+		min: startValue,
+		max: endValue,
+		step: 1000,
+		values: [ selectedRange[0], selectedRange[1] ],
 		slide: function( event, ui ) {
-			$( "#price" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+			priceEl.val( activeCurrency + convertToHumanReadable(ui.values[ 0 ]) + " - " + activeCurrency + convertToHumanReadable(ui.values[ 1 ]) );
 		}
 	});
 
-	$( "#price" ).val( "$" + $( "#mySlider" ).slider( "values", 0 ) +
-			   " - $" + $( "#mySlider" ).slider( "values", 1 ) );
+	priceEl.val( activeCurrency + $( "#mySlider" ).slider( "values", 0 ) +
+	" - " + activeCurrency + $( "#mySlider" ).slider( "values", 1 ) );
 })(jQuery);

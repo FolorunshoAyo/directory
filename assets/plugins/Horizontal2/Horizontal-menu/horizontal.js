@@ -4,7 +4,8 @@ jQuery(function(e) {
 	jQuery(function() {
 		jQuery('body').wrapInner('<div class="horizontalMenucontainer" />');
 		jQuery('<div class="overlapblackbg"></div>').prependTo('.horizontalMenu');
-		jQuery('#horizontal-navtoggle').on("click", function(e) {
+		jQuery('#horizontal-navtoggle').on("click", function( event ) {
+			event.preventDefault();
 			jQuery('body').toggleClass('active');
 		});
 		jQuery('.overlapblackbg').on("click", function(e) {

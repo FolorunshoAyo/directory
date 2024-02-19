@@ -135,6 +135,12 @@
 		width: 100%;
 		display: block;
 
+		&.btn{
+			&:first-child{
+				margin-bottom: 0.25rem;
+			}
+		}
+		
 		&.float-right {
 			float: none !important;
 		}

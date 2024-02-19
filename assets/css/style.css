@@ -1211,6 +1211,13 @@ hr.message-inner-separator {
   vertical-align: baseline;
   border-radius: 3px;
 }
+.badge.job-badge {
+  margin: 0px;
+}
+.badge.job-badge.badge-light {
+  font-size: 0.8rem;
+  font-weight: 500;
+}
 
 .badgetext {
   float: right;
@@ -13603,7 +13610,8 @@ dd {
 #price {
   border: 0;
   font-weight: 500;
-  font-size: 18px;
+  width: 100%;
+  font-size: 15px;
 }
 
 /** article --*/
@@ -16948,6 +16956,9 @@ textarea.form-control {
   .tab-content .tab-pane .card-body a {
     width: 100%;
     display: block;
+  }
+  .tab-content .tab-pane .card-body a.btn:first-child {
+    margin-bottom: 0.25rem;
   }
   .tab-content .tab-pane .card-body a.float-right {
     float: none !important;
@@ -22632,6 +22643,17 @@ a.icon:hover {
 .item-card .cardprice span.type--strikethrough {
   opacity: 0.7;
   text-decoration: line-through;
+}
+
+.item-tags {
+  position: absolute;
+  bottom: 12px;
+  left: 10px;
+  z-index: 9;
+  font-size: 12px;
+}
+.item-tags .badge {
+  padding: 5px 10px;
 }
 
 @media (max-width: 400px) {
