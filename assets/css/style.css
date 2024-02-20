@@ -12597,8 +12597,8 @@ textarea[cols] {
 }
 
 .footerimg img {
-  width: 35px;
-  height: 35px;
+  width: 80px;
+  height: auto;
 }
 
 .single-product .product-desc .product-icons .socialicons a {
@@ -13318,7 +13318,7 @@ dd {
 }
 
 .bannerimg {
-  padding: 3rem 0;
+  padding: 5rem 0;
   background-size: cover;
 }
 .bannerimg .header-text h1 {
@@ -15190,6 +15190,34 @@ textarea.form-control {
   background-color: #6f6f6f;
 }
 
+.blog-list-category {
+  height: 200px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f0f0f0;
+}
+.blog-list-category::-webkit-scrollbar {
+  width: 10px;
+}
+.blog-list-category .scroll-container::-webkit-scrollbar-track {
+  background-color: #f0f0f0;
+}
+.blog-list-category::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+}
+.blog-list-category::-webkit-scrollbar-thumb:hover {
+  background-color: #6f6f6f;
+}
+
+@media screen and (max-width: 700px) {
+  #blog-grid h4 {
+    font-size: 1rem;
+  }
+  #blog-grid p {
+    font-size: 0.9rem;
+  }
+}
 /*----Highlight Styles----*/
 .example + .highlight {
   border-top: none;
@@ -23434,7 +23462,8 @@ a.icon:hover {
 
 .item7-card-text span {
   position: absolute;
-  bottom: 10px;
+  top: 10px;
+  font-size: 80%;
   left: 10px;
 }
 
@@ -34000,6 +34029,10 @@ svg {
   position: relative;
   width: 100%;
   height: 100vh;
+}
+
+.map-header .axgmap {
+  height: 100%;
 }
 
 .axgmap-img {

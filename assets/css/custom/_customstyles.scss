@@ -2112,8 +2112,8 @@ textarea[cols] {
 }
 
 .footerimg img {
-	width: 35px;
-	height: 35px;
+	width: 80px;
+	height: auto;
 }
 
 .single-product .product-desc .product-icons .socialicons a {
@@ -2988,7 +2988,7 @@ dd {
 }
 
 .bannerimg {
-	padding: 3rem 0;
+	padding: 5rem 0;
 	background-size: cover;
 
 	.header-text h1 {
@@ -5257,3 +5257,39 @@ textarea.form-control {
 	}
 }
 
+.blog-list-category{
+	height: 200px;
+	overflow-y: auto;
+	scrollbar-width: thin; // For Firefox
+  	scrollbar-color: #888 #f0f0f0;
+	  
+	&::-webkit-scrollbar {
+		width: 10px;
+	}
+
+	.scroll-container::-webkit-scrollbar-track {
+		background-color: #f0f0f0;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background-color: #888;
+		border-radius: 10px;
+	}
+
+	&::-webkit-scrollbar-thumb:hover {
+		background-color: darken(#888, 10%);
+	}
+}
+
+
+@media screen and (max-width: 700px){
+	#blog-grid{
+		h4{
+			font-size: 1rem;
+		}
+
+		p{
+			font-size: 0.9rem;
+		}
+	}
+}
