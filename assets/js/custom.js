@@ -58,6 +58,17 @@
     return false;
   });
 
+  //___________General Smooth Scroll
+  $("button[data-action-smooth^='scroll']").on("click", function () {
+    $("html, body").animate(
+      {
+        scrollTop: $("#" + $(this).data("action-target")).offset().top,
+      },
+      0
+    );
+    return false;
+  });
+
   //_____________Filter Options Activate
   $(".filter-overlapblackbg").on("click", function (e) {
     $(".horizontalMenucontainer").removeClass("filter-group-active");

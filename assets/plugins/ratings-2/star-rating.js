@@ -1,4 +1,3 @@
-
 $(function() {
 
   // basic use comes with defaults values
@@ -94,6 +93,13 @@ $(function() {
     strokeWidth: 0,
     strokeColor: 'black',
     ratedColors: ['#92db31', '#31cbdb', '#316ddb', '#b931db', '#db3131']
+  });
+
+  $(".my-rating-11").starRating({
+    starSize: 35,
+    strokeWidth: 0,
+    readOnly: true,
+    starShape: 'rounded'
   });
 
 });

@@ -14920,6 +14920,9 @@ textarea.form-control {
 .categories-container {
   max-width: 1300px;
 }
+.categories-container.business-category {
+  max-width: unset;
+}
 .categories-container .categories-tab-links-parent-container {
   display: flex;
   justify-content: space-between;
@@ -14954,6 +14957,49 @@ textarea.form-control {
   border-bottom: 2px solid !important;
 }
 
+.business-category .categories-tab-links-container {
+  font-size: 1rem;
+  border-bottom: 1px solid #e8ebf3;
+}
+.business-category .categories-tab-links-container .nav-item {
+  justify-content: center;
+}
+.business-category .categories-tab-links-container .nav-item .nav-link {
+  display: flex;
+  align-items: center;
+  border: 1px solid transparent;
+  color: #6c757d;
+  width: fit-content;
+  text-wrap: nowrap;
+  min-width: revert;
+}
+.business-category .categories-tab-links-container .nav-item .nav-link:hover {
+  color: var(--secondary-color) !important;
+  background-color: transparent;
+  border-color: transparent transparent var(--secondary-color);
+  border-bottom: 2px solid !important;
+}
+.business-category .categories-tab-links-container .nav-item .nav-link.active {
+  color: var(--secondary-color);
+  background-color: transparent;
+  border-color: transparent transparent var(--secondary-color);
+  border-bottom: 2px solid !important;
+}
+
+@media screen and (max-width: 800px) {
+  .business-category .categories-tab-links-container {
+    width: 100%;
+    display: block;
+  }
+  .business-category .categories-tab-links-container .nav-item {
+    display: block;
+    width: 100%;
+  }
+  .business-category .categories-tab-links-container .nav-item .nav-link {
+    display: inline-block;
+    width: 100%;
+  }
+}
 @media screen and (max-width: 800px) {
   .categories-container .categories-tab-links-parent-container {
     flex-direction: column;
@@ -15111,7 +15157,7 @@ textarea.form-control {
     -o-transition: opacity 1.5s ease-in-out;
   }
 }
-.advert__mobile-leaderboard {
+.advert__mobile-leaderboard, .advert__desktop-leaderboard {
   margin: 0 auto;
   text-align: center;
   width: 100%;
@@ -15218,6 +15264,11 @@ textarea.form-control {
     font-size: 0.9rem;
   }
 }
+.subreview {
+  background-color: #f6f7fb;
+  border-radius: 5px;
+}
+
 /*----Highlight Styles----*/
 .example + .highlight {
   border-top: none;

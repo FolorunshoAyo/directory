@@ -4940,6 +4940,10 @@ textarea.form-control {
 .categories-container{
 	max-width: 1300px;
 
+	&.business-category{
+		max-width: unset;
+	}
+
 	.categories-tab-links-parent-container{
 		display: flex;
 		justify-content: space-between;
@@ -4974,6 +4978,62 @@ textarea.form-control {
 						border-color: transparent transparent $secondary;
 						border-bottom: 2px solid !important;
 					}
+				}
+			}
+		}
+	}
+}
+
+// For Business tabs 
+.business-category{
+	.categories-tab-links-container{
+		font-size: 1rem;
+		border-bottom: 1px solid #e8ebf3;
+	
+		.nav-item{
+			justify-content: center;
+	
+			.nav-link{
+				display: flex;
+				align-items: center;
+				border: 1px solid transparent;
+				color: #6c757d;
+				width: fit-content;
+				text-wrap: nowrap;
+				min-width: revert;
+	
+				&:hover{
+					color: $secondary !important;
+					background-color: transparent;
+					border-color: transparent transparent $secondary;
+					border-bottom: 2px solid !important;
+				}	
+	
+				&.active{
+					color: $secondary;
+					background-color: transparent;
+					border-color: transparent transparent $secondary;
+					border-bottom: 2px solid !important;
+				}
+			}
+		}
+	}
+}
+
+// For business tabs
+@media screen and (max-width: 800px){
+	.business-category{
+		.categories-tab-links-container{
+			width: 100%;
+			display: block;
+	
+			.nav-item{
+				display: block;
+				width: 100%;
+	
+				.nav-link{
+					display: inline-block;
+					width: 100%;
 				}
 			}
 		}
@@ -5164,8 +5224,8 @@ textarea.form-control {
 }
 
 .advert{
-
-	&__mobile-leaderboard{
+	&__mobile-leaderboard,
+	&__desktop-leaderboard{
 		margin: 0 auto;
 		text-align: center;
 		width: 100%;
@@ -5292,4 +5352,9 @@ textarea.form-control {
 			font-size: 0.9rem;
 		}
 	}
+}
+
+.subreview{
+	background-color: $background;
+	border-radius: 5px;
 }
