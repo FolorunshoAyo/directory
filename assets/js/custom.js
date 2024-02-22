@@ -185,8 +185,11 @@ if (navigator.userAgent.match(/like Mac OS X/i)) {
 // Map functionality
 function loadGMap(e, t) {
   var a = document.getElementsByTagName("script");
-  for (i = 0; i < a.length; i++)
-    if (a[i].src.match(/maps.googleapis.com/)) return void window[e]();
+  for (i = 0; i < a.length; i++){
+    if (a[i].src.match(/maps.googleapis.com/)) {
+      return void window[e]();
+    }
+  }
   var o = document.createElement("script");
   (o.type = "text/javascript"),
     (o.async = !0),
@@ -268,7 +271,7 @@ function COverlay(e, t, a) {
 }
 
 (map = null),
-  (initMapList = function (e) {
+  (initBusinessMapList = function (e) {
     var a = new google.maps.InfoWindow({
       pixelOffset: new google.maps.Size(0, -45),
     });
@@ -304,7 +307,7 @@ function COverlay(e, t, a) {
           (this.div_ = t),
           google.maps.event.addDomListener(t, "click", function () {
             map.setCenter(e.latlng_),
-              a.setContent(composeHtml(e.no_)),
+              a.setContent(composeBusinessHtml(e.no_)),
               a.setPosition(e.latlng_),
               a.open(map);
           }),
@@ -345,7 +348,7 @@ function COverlay(e, t, a) {
       });
     });
   }),
-  (composeHtml = function (e) {
+  (composeBusinessHtml = function (e) {
     return `
 	<div class="axg-img">
 		<h4>${$("#company-" + e + " .business-title").html()}</h4>
@@ -364,12 +367,116 @@ function COverlay(e, t, a) {
 			Get Directions
 		</a>
 	</div>`;
+  }),
+  (initPropertyMapList = function (e) {
+    console.log("preparing Property maps");
+    var a = new google.maps.InfoWindow({
+      pixelOffset: new google.maps.Size(0, -45),
+    });
+    google.maps.event.addListener(a, "closeclick", function () {
+      a.close();
+    }),
+      void 0 === e && (e = "propertiesmap");
+    var t = {
+      zoom: $("#propertiesmap").data("map-zoom"),
+      center: new google.maps.LatLng(
+        $("#propertiesmap").data("map-ltd"),
+        $("#propertiesmap").data("map-lng")
+      ),
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      scrollwheel: !1,
+      fullscreenControl: !1,
+      streetViewControl: !1,
+      backgroundColor: "#F2F2F2",
+      zoomControlOptions: {
+        style: google.maps.ZoomControlStyle.LARGE,
+        position: google.maps.ControlPosition.TOP_LEFT,
+      },
+      styles: map_styles,
+    };
+    ((map = new google.maps.Map(document.getElementById(e), t)).markers =
+      new Array()),
+      (COverlay.prototype = new google.maps.OverlayView()),
+      (COverlay.prototype.onAdd = function () {
+        var e = this,
+          t = document.createElement("div");
+        (t.className = "gmap_marker"),
+          (t.innerHTML = "<u>" + (this.no_ + 1) + "</u>"),
+          (this.div_ = t),
+          google.maps.event.addDomListener(t, "click", function () {
+            map.setCenter(e.latlng_),
+              a.setContent(composePropertyHtml(e.no_)),
+              a.setPosition(e.latlng_),
+              a.open(map);
+          }),
+          this.getPanes().overlayMouseTarget.appendChild(t);
+      }),
+      (COverlay.prototype.draw = function () {
+        var e = this.getProjection().fromLatLngToDivPixel(this.latlng_),
+          t = this.div_;
+        e &&
+          ((t.style.left = e.x - 18 + "px"), (t.style.top = e.y - 44 + "px"));
+      }),
+      (COverlay.prototype.onRemove = function () {
+        this.setMap(null),
+          this.div_.parentNode.removeChild(this.div_),
+          (this.div_ = null);
+      }),
+      (count = 1);
+    $(".mapmarker").each(function (e, t) {
+      0 == e &&
+        (map.setCenter(
+          new google.maps.LatLng($(this).data("ltd"), $(this).data("lng"))
+        ),
+        map.setZoom($("#propertiesmap").data("map-zoom")));
+      if (
+        count <= Number($("#propertiesmap").data("map-properties-count-per-page"))
+      ) {
+        e = new COverlay(
+          new google.maps.LatLng($(this).data("ltd"), $(this).data("lng")),
+          e,
+          map
+        );
+        map.markers.push(e);
+        count++;
+      }
+      $(this).click(function () {
+        map.markers[Number($(this).data("key"))].div_.click();
+        $(".horizontalMenucontainer").addClass("off-canvas-active");
+      });
+    });
+  }),
+  (composePropertyHtml = function (e) {
+    return `
+	<div class="axg-img">
+		<h4>${$("#property-" + e + " .property-title").html()}</h4>
+		<img
+			src="${$("#property-" + e + " .property-image").attr("src")}"
+			alt="img"
+			class="w-150 h100 mb-3 mt-2"
+		/>
+		<h6 class="text-dark font-weight-normal mb-3 item-card2-desc">
+			${$("#property-" + e + " .property-price").html()}
+		</h6>
+		<a href="${$("#property-" + e + " .property-direction").attr(
+      "href"
+    )}" class="btn btn-sm btn-secondary btn-pill">
+			Get Directions
+		</a>
+	</div>`;
   });
 
 if($("#companiesmap").length){
   //___________Companies map activate
   $("#companiesmap").removeClass("gm_slider")
-  loadGMap("initMapList", $("#companiesmap").data("map-key"));
+  loadGMap("initBusinessMapList", $("#companiesmap").data("map-key"));
+}
+
+if($("#propertiesmap").length){
+  //___________Companies map activate
+  $("#propertiesmap").removeClass("gm_slider");
+  console.log("Loading GMAP");
+  loadGMap("initPropertyMapList", $("#propertiesmap").data("map-key"));
 }
 
 //_____________Filter Options Activate

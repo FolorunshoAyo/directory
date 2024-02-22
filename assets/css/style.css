@@ -13165,6 +13165,12 @@ dd {
   .tab-content #tab-11 .item-card2-img img {
     height: 219px;
   }
+  .tab-content .tab-pane[id] .item-card9-img {
+    width: 400px;
+  }
+  .tab-content .tab-pane[id] .item-card9-img img {
+    height: 219px;
+  }
   .h-197 {
     height: 197px;
   }
