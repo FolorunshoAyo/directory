@@ -102,4 +102,11 @@ $(function() {
     starShape: 'rounded'
   });
 
+  $(".my-rating-12").starRating({
+    starSize: 30,
+    strokeWidth: 0,
+    readOnly: true,
+    starShape: 'rounded'
+  });
+
 });
